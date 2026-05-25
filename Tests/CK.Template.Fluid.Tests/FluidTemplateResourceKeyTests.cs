@@ -1,3 +1,8 @@
+using CK.Core;
+using CK.Template.Fluid;
+using NUnit.Framework;
+using Shouldly;
+
 namespace CK.Template.Fluid.Tests;
 
 [TestFixture]

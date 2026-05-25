@@ -1,7 +1,11 @@
+using CK.Core;
 using CK.Setup;
+using CK.Template.Fluid;
 using CK.Template.Fluid.Tests.Engine.Fixtures;
 using CK.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using NUnit.Framework;
+using Shouldly;
 using static CK.Testing.MonitorTestHelper;
 
 namespace CK.Template.Fluid.Tests.Engine;

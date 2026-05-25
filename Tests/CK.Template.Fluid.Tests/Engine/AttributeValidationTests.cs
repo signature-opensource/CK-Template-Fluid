@@ -1,5 +1,8 @@
+using CK.Core;
 using CK.Setup;
+using CK.Template.Fluid;
 using CK.Testing;
+using NUnit.Framework;
 using static CK.Testing.MonitorTestHelper;
 
 namespace CK.Template.Fluid.Tests.Engine;

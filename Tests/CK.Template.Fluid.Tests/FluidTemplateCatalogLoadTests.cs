@@ -1,5 +1,9 @@
-using System.Reflection;
+using CK.Core;
+using CK.Template.Fluid;
 using CK.Testing;
+using NUnit.Framework;
+using Shouldly;
+using System.Reflection;
 using static CK.Testing.MonitorTestHelper;
 
 namespace CK.Template.Fluid.Tests;
