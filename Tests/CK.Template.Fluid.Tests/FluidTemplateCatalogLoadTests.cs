@@ -14,11 +14,14 @@ public class FluidTemplateCatalogLoadTests
     {
         var catalog = new FluidTemplateCatalog();
         var count = catalog.LoadFromAssemblies( TestHelper.Monitor, new[] { ThisAssembly } );
-        // 4 liquid files; Greeting.liquid is embedded twice (standard .NET name + CK ck@ uplift),
-        // so LoadFromAssemblies counts 5 register operations (both are accepted, second overwrites).
-        count.ShouldBeGreaterThanOrEqualTo( 4 );
-        catalog.Contains( "Greeting" ).ShouldBeTrue();
-        catalog.Contains( "UserInvitation.Body" ).ShouldBeTrue();
+        // 4 .liquid fixtures on disk, but Greeting.liquid (the culture-less file) ships
+        // under both resource-name conventions (standard .NET dotted + CK ck@ uplift),
+        // so LoadFromAssemblies performs 5 register operations total. The two
+        // (Greeting, Invariant) registrations target the same key — the second
+        // overwrites the first — leaving 2 distinct names with 4 distinct (name, culture)
+        // entries in the catalog.
+        count.ShouldBe( 5 );
+        catalog.Names.OrderBy( n => n ).ShouldBe( new[] { "Greeting", "UserInvitation.Body" } );
     }
 
     [Test]
@@ -47,10 +50,12 @@ public class FluidTemplateCatalogLoadTests
     [Test]
     public void LoadFromAssemblies_skips_dynamic_assemblies()
     {
-        // Just confirm the method runs without throwing across the full AppDomain
-        // (it includes some dynamic assemblies in NUnit/test-host context).
+        // Confirms the method runs without throwing across the full AppDomain
+        // (which includes some dynamic assemblies in NUnit/test-host context).
+        // The exact count is environment-dependent, so we only assert the lower
+        // bound: our own assembly's 5 register operations must show up.
         var catalog = new FluidTemplateCatalog();
         var count = catalog.LoadFromAssemblies( TestHelper.Monitor, AppDomain.CurrentDomain.GetAssemblies() );
-        count.ShouldBeGreaterThanOrEqualTo( 4 );
+        count.ShouldBeGreaterThanOrEqualTo( 5 );
     }
 }
