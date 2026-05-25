@@ -1,23 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <IsPackable>false</IsPackable>
-    <IsTestProject>true</IsTestProject>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CK.Testing.NUnit" Version="15.0.1--ci.1" />
-    <PackageReference Include="CK.Testing.StObjEngine" Version="33.0.1--ci.4" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="CK.Testing.NUnit" Version="15.0.1--ci.1" />
+        <PackageReference Include="CK.Testing.StObjEngine" Version="33.0.1--ci.4" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\CK.Template.Fluid\CK.Template.Fluid.csproj" />
-    <ProjectReference Include="..\..\CK.Template.Fluid.Engine\CK.Template.Fluid.Engine.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\CK.Template.Fluid\CK.Template.Fluid.csproj" />
+        <ProjectReference Include="..\..\CK.Template.Fluid.Engine\CK.Template.Fluid.Engine.csproj" />
+    </ItemGroup>
 
 </Project>
