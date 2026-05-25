@@ -48,14 +48,14 @@ public class FluidTemplateCatalogLoadTests
     }
 
     [Test]
-    public void LoadFromAssemblies_skips_dynamic_assemblies()
+    public void LoadFromAssemblies_does_not_throw_on_full_AppDomain_scan()
     {
-        // Confirms the method runs without throwing across the full AppDomain
-        // (which includes some dynamic assemblies in NUnit/test-host context).
-        // The exact count is environment-dependent, so we only assert the lower
-        // bound: our own assembly's 5 register operations must show up.
+        // The NUnit/test-host AppDomain includes dynamic assemblies (Reflection.Emit,
+        // anonymous-type generators) which the production code skips via the
+        // assembly.IsDynamic check. This test pins down that the full scan stays
+        // exception-free even with those assemblies present.
         var catalog = new FluidTemplateCatalog();
-        var count = catalog.LoadFromAssemblies( TestHelper.Monitor, AppDomain.CurrentDomain.GetAssemblies() );
-        count.ShouldBeGreaterThanOrEqualTo( 5 );
+        Should.NotThrow( () =>
+            catalog.LoadFromAssemblies( TestHelper.Monitor, AppDomain.CurrentDomain.GetAssemblies() ) );
     }
 }

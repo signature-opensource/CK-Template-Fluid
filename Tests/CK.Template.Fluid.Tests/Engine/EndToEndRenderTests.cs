@@ -16,6 +16,12 @@ public class EndToEndRenderTests
         engineConfig.EnsureAspect<FluidAspectConfiguration>();
         engineConfig.FirstBinPath.Types.Add( typeof( TestFluidTemplatePackage ) );
         engineConfig.FirstBinPath.Types.Add( typeof( IGreetingModel ) );
+        // FluidAspectTests (the happy-path aspect test) only validates that the
+        // engine reaches Succeed status, so it does NOT need to register the
+        // runtime types. This test resolves them from the StObj-built DI map,
+        // so both the IRealObject catalog and the ISingletonAutoService
+        // implementation must be explicitly added — CreateDefaultEngineConfiguration
+        // does not auto-discover them from referenced project assemblies.
         engineConfig.FirstBinPath.Types.Add( typeof( FluidTemplateCatalog ) );
         engineConfig.FirstBinPath.Types.Add( typeof( FluidTemplateService ) );
 

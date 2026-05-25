@@ -53,11 +53,13 @@ public class FluidTemplateResourceKeyTests
     }
 
     [Test]
-    public void Pascal_cased_last_segment_is_not_treated_as_culture()
+    public void Uppercase_two_letter_suffix_is_not_treated_as_culture()
     {
-        // "Body" looks 4 letters but is uppercased — the regex requires lower-case.
-        var key = FluidTemplateResourceKey.TryParse( "UserInvitation.Body.liquid" );
-        key!.Value.Name.ShouldBe( "UserInvitation.Body" );
+        // The culture regex (^[a-z]{2}(-[A-Za-z]{2,4})?$) requires the language
+        // portion to be lower-case. "EN" is two letters but uppercased, so the
+        // parser must treat it as part of the name, not as a culture tag.
+        var key = FluidTemplateResourceKey.TryParse( "UserInvitation.EN.liquid" );
+        key!.Value.Name.ShouldBe( "UserInvitation.EN" );
         key.Value.Culture.ShouldBe( NormalizedCultureInfo.Invariant );
     }
 

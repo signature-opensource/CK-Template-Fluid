@@ -77,7 +77,12 @@ public class FluidTemplateServiceCatalogTests
         var svc = BuildServiceWithFixtures();
         using var cts = new CancellationTokenSource();
         cts.Cancel();
-        await Should.ThrowAsync<OperationCanceledException>( () =>
+        var ex = await Should.ThrowAsync<OperationCanceledException>( () =>
             svc.RenderAsync( "Greeting", NormalizedCultureInfo.Invariant, new { name = "Ada" }, cts.Token ).AsTask() );
+        // Pin the throw site: the production code observes the caller's token
+        // via cancel.ThrowIfCancellationRequested() between catalog lookup and
+        // render. Asserting CancellationToken == cts.Token confirms the exception
+        // came from our token, not an internal one.
+        ex.CancellationToken.ShouldBe( cts.Token );
     }
 }
