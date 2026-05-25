@@ -244,3 +244,6 @@ paket-files/
 
 # FAKE - F# Make
 .fake/
+
+# CK StObj engine generated files (regenerated at test-run time)
+**/$StObjGen/
