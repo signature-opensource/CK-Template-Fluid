@@ -1038,7 +1038,7 @@ Expected: 0 warnings, 0 errors.
 ```bash
 dotnet test CK-Templating.slnx -c Debug
 ```
-Expected output summary: **40 tests** (10 + 8 + 4 + 6 + 6 + 1 + 1 + 3 + 1 across 9 fixtures), **0 failed**.
+Expected output summary: **39 tests** (10 + 8 + 4 + 6 + 6 + 1 + 1 + 2 + 1 across 9 fixtures — see follow-up #4 below for why Task 9 ships 2 tests instead of 3), **0 failed**.
 
 - [ ] **Step 3: Spot-check the `$StObjGen/G0.cs`**
 
@@ -1070,3 +1070,4 @@ git commit -m "test: stabilize Layer A + Layer B suite"
 1. The aspect's malformed-`.liquid` build-failure path is covered only at the parser level (Task 8), not via an actual aspect run. If a stronger regression net is needed, a sidecar test-fixture assembly project that ships a broken `.liquid` is the cleanest next step.
 2. If `CK.Testing.NUnit` 15.0.1--ci.1 and `CK.Testing.StObjEngine` 33.0.1--ci.4 have conflicting transitive deps, downgrading `CK.Testing.NUnit` to a matching v33 series (if one exists) may be needed.
 3. The two-pass layout-composition pattern Lacoste uses (`_DefaultMailLayout` wrapping a body template) is NOT directly tested — it's emergent from `RenderAsync` + ambient bindings, which are covered separately. A combined integration test could be added if regressions surface.
+4. **Task 9 deviation:** The plan called for a third negative test — `[FluidTemplate]` on a class — but `FluidTemplateAttribute` is declared `AttributeUsage(AttributeTargets.Interface)`, which the C# compiler enforces before the StObj engine ever sees the type (CS0592). The `if( !type.IsInterface )` branch in `FluidTemplateAttributeImpl.cs:41-44` is therefore dead from C#. Possible decisions: (a) delete the dead branch from the Impl, (b) widen the attribute to `Interface | Class` so the engine becomes the validator (defense in depth), or (c) leave as-is and accept the redundancy. Final test count is **39** instead of the planned 40.
