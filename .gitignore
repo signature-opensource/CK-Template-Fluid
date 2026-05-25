@@ -247,3 +247,6 @@ paket-files/
 
 # CK StObj engine generated files (regenerated at test-run time)
 **/$StObjGen/
+
+# CK activity-monitor log output (per-run, never tracked)
+**/Logs/
