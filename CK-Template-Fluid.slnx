@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="nuget.config" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/CK.Template.Fluid.Tests/CK.Template.Fluid.Tests.csproj" />
+  </Folder>
+  <Project Path="CK.Template.Fluid.Engine/CK.Template.Fluid.Engine.csproj" />
+  <Project Path="CK.Template.Fluid/CK.Template.Fluid.csproj" />
+</Solution>

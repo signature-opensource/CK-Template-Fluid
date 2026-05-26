@@ -1,5 +1,0 @@
-<Solution>
-  <Project Path="CK.Template.Fluid.Engine/CK.Template.Fluid.Engine.csproj" />
-  <Project Path="CK.Template.Fluid/CK.Template.Fluid.csproj" />
-  <Project Path="Tests/CK.Template.Fluid.Tests/CK.Template.Fluid.Tests.csproj" />
-</Solution>
