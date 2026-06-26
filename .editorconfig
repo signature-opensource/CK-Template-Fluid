@@ -1,6 +1,7 @@
-# Signature-Code .editorconfig
+# Signature-Code .editorconfig. This file is under control of CKli:
+#  - It is the same for all repositories in the CK stack.
+#  - Its content is defined by the `.PublicStack/Common/.editorconfig` file. 
 # See also: https://github.com/dotnet/roslyn/blob/main/src/Workspaces/CSharp/Portable/Formatting/CSharpFormattingOptions.cs
-# 20170522
 
 root = true
 
@@ -144,9 +145,7 @@ dotnet_diagnostic.IDE0090.severity = none
 dotnet_diagnostic.VSTHRD101.severity = error
 # VSTHRD003: Avoid awaiting foreign Tasks
 dotnet_diagnostic.VSTHRD003.severity = none
+csharp_prefer_system_threading_lock = true:suggestion
 
 # /Signature-Code .editorconfig
 
-[*.ts]
-quote_type = single
-ij_typescript_use_double_quotes = false
