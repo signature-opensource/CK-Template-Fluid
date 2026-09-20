@@ -8,8 +8,8 @@
 
     <ItemGroup>
         <PackageReference Include="Fluid.Core" Version="2.40.0" />
-        <PackageReference Include="CK.StObj.Model" Version="33.1.0--ci.7" />
-        <PackageReference Include="CK.Globalization" Version="5.0.5--ci.4" />
+        <PackageReference Include="CK.StObj.Model" Version="33.1.0--ci.8" />
+        <PackageReference Include="CK.Globalization" Version="5.0.5--ci.5" />
     </ItemGroup>
 
 </Project>
