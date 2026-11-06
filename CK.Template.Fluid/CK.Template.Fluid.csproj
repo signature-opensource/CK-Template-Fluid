@@ -8,8 +8,8 @@
 
     <ItemGroup>
         <PackageReference Include="Fluid.Core" Version="2.40.0" />
-        <PackageReference Include="CK.StObj.Model" Version="36.0.0-0.cris-auth.0.ci.30" />
-        <PackageReference Include="CK.Globalization" Version="8.0.0-0.cris-auth.0.ci.11" />
+        <PackageReference Include="CK.StObj.Model" Version="36.0.0-0.cris-auth.0.ci.31" />
+        <PackageReference Include="CK.Globalization" Version="8.0.0-0.cris-auth.0.ci.12" />
     </ItemGroup>
 
 </Project>
