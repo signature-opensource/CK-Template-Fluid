@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CK.StObj.Engine" Version="36.0.0-0.cris-auth.1.ci.41" />
+        <PackageReference Include="CK.StObj.Engine" Version="36.0.0-0.cris-auth.1.ci.45" />
     </ItemGroup>
 
     <ItemGroup>
