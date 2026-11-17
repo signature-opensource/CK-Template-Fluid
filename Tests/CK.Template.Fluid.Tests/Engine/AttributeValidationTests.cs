@@ -40,7 +40,6 @@ public class AttributeValidationTests
     public async Task FluidTemplate_on_a_non_IPoco_interface_fails_the_build()
     {
         var engineConfig = TestHelper.CreateDefaultEngineConfiguration( compileOption: CompileOption.None );
-        engineConfig.EnsureAspect<FluidAspectConfiguration>();
         engineConfig.FirstBinPath.Types.Add( typeof( IFluidTemplateOnNonPocoFixture ) );
 
         await engineConfig.GetFailedAutomaticServicesAsync( "does not derive from IPoco" );
@@ -50,7 +49,6 @@ public class AttributeValidationTests
     public async Task FluidTemplatePackage_on_a_class_that_does_not_derive_from_FluidTemplatePackage_fails_the_build()
     {
         var engineConfig = TestHelper.CreateDefaultEngineConfiguration( compileOption: CompileOption.None );
-        engineConfig.EnsureAspect<FluidAspectConfiguration>();
         engineConfig.FirstBinPath.Types.Add( typeof( FluidTemplatePackageOnWrongBaseFixture ) );
 
         await engineConfig.GetFailedAutomaticServicesAsync(

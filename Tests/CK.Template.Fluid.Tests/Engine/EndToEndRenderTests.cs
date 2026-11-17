@@ -17,10 +17,9 @@ public class EndToEndRenderTests
     public async Task IFluidTemplateService_resolved_from_DI_renders_a_template_from_the_catalog()
     {
         var engineConfig = TestHelper.CreateDefaultEngineConfiguration();
-        engineConfig.EnsureAspect<FluidAspectConfiguration>();
         engineConfig.FirstBinPath.Types.Add( typeof( TestFluidTemplatePackage ) );
         engineConfig.FirstBinPath.Types.Add( typeof( IGreetingModel ) );
-        // FluidAspectTests (the happy-path aspect test) only validates that the
+        // TemplateValidationTests (the happy-path engine test) only validates that the
         // engine reaches Succeed status, so it does NOT need to register the
         // runtime types. This test resolves them from the StObj-built DI map,
         // so both the IRealObject catalog and the ISingletonAutoService

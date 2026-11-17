@@ -13,12 +13,12 @@ public class BrokenTemplateAssetTests
         // This is the same FluidParser.TryParse call used by:
         //   - FluidTemplateService.RenderInlineAsync (wraps as ArgumentException)
         //   - FluidTemplateCatalog.LoadFromAssemblies (wraps as InvalidOperationException)
-        //   - FluidAspect.RunPreCode (logs Error and returns false → fails the build)
+        //   - FluidTemplatePackageAttributeImpl (logs an Error at the engine run → fails the build)
         // ArgumentException wrapping is exercised in
         // FluidTemplateServiceInlineTests.RenderInlineAsync_throws_ArgumentException_on_parse_error.
-        // The aspect path is not directly tested with a broken embedded resource because
-        // doing so would pollute every other engine test in this assembly via the
-        // AppDomain-wide resource scan. See plan follow-up #1 for the sidecar approach.
+        // The engine path is not directly tested with a broken embedded resource: the check parses the
+        // templates of the package's assembly, a broken resource here would fail every other engine test
+        // of this assembly.
         var parser = new FluidParser();
         var ok = parser.TryParse( "{% if %}oops{% endif %}", out _, out var error );
         ok.ShouldBeFalse();

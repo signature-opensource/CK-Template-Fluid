@@ -7,13 +7,12 @@ using static CK.Testing.MonitorTestHelper;
 namespace CK.Template.Fluid.Tests.Engine;
 
 [TestFixture]
-public class FluidAspectTests
+public class TemplateValidationTests
 {
     [Test]
-    public async Task RunPreCode_succeeds_when_every_liquid_resource_is_well_formed()
+    public async Task the_templates_of_a_package_are_parsed_by_the_engine()
     {
         var engineConfig = TestHelper.CreateDefaultEngineConfiguration( compileOption: CompileOption.None );
-        engineConfig.EnsureAspect<FluidAspectConfiguration>();
         engineConfig.FirstBinPath.Types.Add( typeof( TestFluidTemplatePackage ) );
         engineConfig.FirstBinPath.Types.Add( typeof( IGreetingModel ) );
 
