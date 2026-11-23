@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CK.StObj.Engine" Version="37.0.0-0.uc.1.ci.52" />
+        <PackageReference Include="CK.StObj.Engine" Version="37.0.0-0.uc.1.ci.54" />
     </ItemGroup>
 
     <ItemGroup>
